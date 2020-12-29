@@ -3,17 +3,17 @@ entries:
   quinnba:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2020-12-28T20:45:24.717052582-05:00"
+    created: "2020-12-29T11:43:10.748056577-05:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: 9.2.1
     description: A Helm chart for Kubernetes
-    digest: 04ed7cc5d117a7fe3f9320c1e89fe9cbca45baf8c57929596787103e2e191eef
+    digest: e9ab69fe9305658b60f52ebacce8bbd81fba133c4f3a7a42b72d28e276f0ca4e
     name: quinnba
     type: application
     urls:
     - https://quinnromanek.com/charts/quinnba-0.0.1.tgz
     version: 0.0.1
-generated: "2020-12-28T20:45:24.704047521-05:00"
+generated: "2020-12-29T11:43:10.739580775-05:00"
