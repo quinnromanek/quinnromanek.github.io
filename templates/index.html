@@ -1,4 +1,5 @@
 {% import "sam/templates/macros.html" as macros %}
+{% import "util.html" as util %}
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
 
         <link rel="stylesheet" href="{{ get_url(path='fonts.css') }}">
         <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+        <link rel="stylesheet" href="{{ get_url(path='quinn.css') }}">
 
         <title>{% block htmltitle %}{{ config.title }}{% endblock htmltitle %}</title>
 
@@ -22,27 +24,50 @@
     <body>
         {% block body %}
             <div class="section" id="splash">
-            <div class="big-link">
-              {{ config.title }}
-            </div>
-                {% if config.extra.sam_menu %}
+              <div class="splash-left">
+                <img class="profile" src="{{ resize_image(path='profile.jpg', width=300, height=300) }}" />
+                <div class="big-link">
+                  {{ config.title }}
+                </div>
+              </div>
+              <div class="splash-right">
+                {% if false %}
                     {% for link in config.extra.sam_menu %}
                         <div class="big-link">
                             <a href="{{ link.link }}">
                                 {{ link.text }}
                             </a>
+                            {% if link.description %}
+                              <div class="expandable link-description">
+                                {{ link.description }}
+                              </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 {% else %}
                     {% for current in section.subsections %}
                         {% set current = get_section(path=current) %}
                         <div class="big-link">
-                            <a href="{{ current.permalink }}">
+                            <span class="subheader">
                                 {{ macros::title_or_last(component=current) }}
-                            </a>
+                            </span>
+                            {% set previews = current.pages | concat(with=current.subsections) | slice(end=3) %}
+                            {% if previews | length > 0 %}
+                              <div class="expandable link-description">
+                                {% for preview in previews %}
+                                  {% if preview is string %}
+                                    {{ util::preview(component=get_section(path=preview)) }}
+                                  {% else %}
+                                    {{ util::preview(component=preview) }}
+                                  {% endif %}
+
+                                {% endfor %}
+                              </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 {% endif %}
+              </div>
             </div>
         {% endblock body %}
     </body>

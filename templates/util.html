@@ -1,0 +1,5 @@
+
+{% macro preview(component) %}
+<!-- {{ component.extra.image }} -->
+<img class="preview" src="{{ resize_image(path=component.extra.image, width=100, height=100)}}" />
+{% endmacro preview %}
