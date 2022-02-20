@@ -2,5 +2,5 @@
 title = "Flash Games"
 
 [extra]
-image = "profile.jpg"
+image = "games/flash-games.png"
 +++

@@ -20,12 +20,14 @@
         {% if config.generate_rss %}
             <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='rss.xml') }}">
         {% endif %}
+        {{ util::tracking() }}
     </head>
     <body>
         {% block body %}
             <div class="section" id="splash">
               <div class="splash-left">
-                <img class="profile" src="{{ resize_image(path='profile.jpg', width=300, height=300) }}" />
+                {% set image = resize_image(path='profile.jpg', width=300, height=300) %}
+                <img class="profile" src="{{ image.url }}" />
                 <div class="big-link">
                   {{ config.title }}
                 </div>

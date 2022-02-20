@@ -2,5 +2,6 @@
 title = "Sticky Buns"
 
 [extra]
-image = "profile.jpg"
+image = "games/stickybuns.jpg"
+link = "https://chrislhall.itch.io/stickybuns"
 +++
